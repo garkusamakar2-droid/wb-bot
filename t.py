@@ -1,8 +1,14 @@
+import os
+
 import telebot
 
 
 
-TOKEN = "8980119127:AAFqYyXfgQdoAsMbR88YPN08tyP3ST5IWcE"
+TOKEN = os.getenv("BOT_TOKEN")
+
+if not TOKEN:
+
+    raise Exception("BOT_TOKEN not found in environment variables")
 
 
 
@@ -14,7 +20,7 @@ bot = telebot.TeleBot(TOKEN)
 
 def start(message):
 
-    bot.reply_to(message, "✅ Бот работает через telebot!")
+    bot.reply_to(message, "✅ Бот работает на Railway!")
 
 
 
@@ -26,6 +32,6 @@ def echo(message):
 
 
 
-print("Бот запущен...")
+print("Бот запущен и слушает...")
 
 bot.infinity_polling()
